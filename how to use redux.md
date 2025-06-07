@@ -1,5 +1,12 @@
 # 🧠 How to Use Redux Toolkit in Your React Project (with Cart Functionality)
 
+**Redux** is a **state management library** for JavaScript applications (commonly used with React) that helps you **manage and centralize the application’s state** in a predictable way using:
+
+* **A single store** to hold all app state
+* **Actions** to describe what happened
+* **Reducers** to update the state based on those actions
+
+> 🔁 Redux is ideal for large apps where many components need access to the same data.
 
 
 ## 🌱 STEP 1: Create Your Vite + React Project (if not already)
