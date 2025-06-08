@@ -9,7 +9,8 @@ function reducer(state) {
 }
 
 reduxState = reducer(reduxState)
-console.log(state)
+reduxState = reducer(reduxState)
+console.log(reduxState)
 
 // import { createStore } from 'redux'
 
