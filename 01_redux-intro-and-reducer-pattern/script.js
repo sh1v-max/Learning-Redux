@@ -1,24 +1,14 @@
-let state = {
-  count: 0,
+let reduxState = {
+  post: 0,
+  name: 'Anurag Singh',
+  age: 26,
 }
 
-let prevState = state
-
-function increment() {
-  // mutating state
-  // state.count = state.count
-  
-  // not mutating state
-  state = {count: state.count + 1 }
+function reducer(state) {
+  return {...state, post: state.post + 1}
 }
 
-increment()
-console.log(state)
-
-increment()
-console.log(state)
-
-increment()
+reduxState = reducer(reduxState)
 console.log(state)
 
 // import { createStore } from 'redux'
