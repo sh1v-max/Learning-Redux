@@ -1,5 +1,11 @@
 import { createStore } from 'redux'
 
+const state = {
+  post: 0,
+  name: 'Anurag Singh',
+  age: 26,
+}
+
 const initialState = {
   post: 0,
   name: 'Anurag Singh',
