@@ -38,4 +38,10 @@ const unsubscribe = store.subscribe(() => {
 
 postCountElement.innerText = store.getState().post
 
+store.dispatch({ type: INCREMENT })
+store.dispatch({ type: DECREMENT })
+store.dispatch({ type: INCREASE_BY, payload: 15 })
+store.dispatch({ type: DECREASE_BY, payload: 5 })
+
+// unsubscribe()
 
