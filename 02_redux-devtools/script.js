@@ -45,3 +45,8 @@ store.dispatch({ type: DECREASE_BY, payload: 5 })
 
 // unsubscribe()
 
+postCountElement.addEventListener('click', () => {
+  store.dispatch({ type: INCREMENT })
+})
+
+console.log("hello")
