@@ -31,3 +31,11 @@ const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__?.())
 
 console.log(store)
 
+const unsubscribe = store.subscribe(() => {
+  console.log(store.getState())
+  postCountElement.innerText = store.getState().post
+})
+
+postCountElement.innerText = store.getState().post
+
+
