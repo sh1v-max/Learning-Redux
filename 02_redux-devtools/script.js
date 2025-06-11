@@ -83,12 +83,3 @@ store.dispatch({ type: SET_STATUS, payload: 'ready' }); // status: 'ready'
 
 // You can also get the current state directly at any time:
 console.log('Final State after all dispatches:', store.getState());
-
-// --- Example HTML (if you were running this in a browser) ---
-/*
-<body>
-  <h1>Redux Basic Example</h1>
-  <p>Post Count: <span class="post-count">0</span></p>
-  <script src="your-script-file.js"></script>
-</body>
-*/
