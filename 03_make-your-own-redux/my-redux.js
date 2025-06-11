@@ -3,6 +3,7 @@ export function myCreateStore(reducer) {
   const listeners = []
   const store = {
     getState() {
+      return state
     },
     dispatch(action) {
     },
