@@ -12,6 +12,13 @@ export function myCreateStore(reducer) {
       })
     },
     subscribe(listener) {
+      listeners.push(listener)
+      return function () {
+        const listenerIndex = listeners.findIndex(
+          (registeredListeners) => registeredListeners === listener
+        )
+        listeners.splice(listenerIndex, 1)
+      }
     },
   }
 
