@@ -6,6 +6,10 @@ export function myCreateStore(reducer) {
       return state
     },
     dispatch(action) {
+      state = reducer(state, action)
+      listeners.forEach((listener) => {
+        listener()
+      })
     },
     subscribe(listener) {
     },
