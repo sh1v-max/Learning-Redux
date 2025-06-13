@@ -10,6 +10,10 @@ const initialState = {
 // console.log(initialState.products)
 const CART_ADD_ITEM = 'cart/addItem'
 const CART_REMOVE_ITEM = 'cart/removeItem'
+const CART_ITEM_INCREASE_QUANTITY = 'cart/increaseItemQuantity'
+const CART_ITEM_DECREASE_QUANTITY = 'cart/decreaseItemQuantity'
+const WISHLIST_ADD_ITEM = 'wishList/addItem'
+const WISHLIST_REMOVE_ITEM = 'wishList/removeItem'
 
 function reducer(state = initialState, action) {
   switch (action.type) {
@@ -24,6 +28,28 @@ function reducer(state = initialState, action) {
           (cartItem) => cartItem.productId !== action.payload.productId
         ),
       }
+    case CART_ITEM_INCREASE_QUANTITY:
+      return {
+        ...state,
+        cartItems: state.cartItems.map((cartItem) => {
+          if (cartItem.productId === action.payload.productId) {
+            return { ...cartItem, quantity: cartItem.quantity + 1 }
+          }
+          return cartItem
+        }),
+      }
+    case CART_ITEM_DECREASE_QUANTITY:
+      return {
+        ...state,
+        cartItems: state.cartItems
+          .map((cartItem) => {
+            if (cartItem.productId === action.payload.productId) {
+              return { ...cartItem, quantity: cartItem.quantity - 1 }
+            }
+            return cartItem
+          })
+          .filter((cartItem) => cartItem.quantity > 0),
+      }
   }
 }
 
@@ -34,5 +60,22 @@ store.dispatch({ type: CART_ADD_ITEM, payload: { productId: 1, quantity: 1 } })
 store.dispatch({ type: CART_ADD_ITEM, payload: { productId: 12, quantity: 1 } })
 store.dispatch({ type: CART_ADD_ITEM, payload: { productId: 6, quantity: 1 } })
 store.dispatch({ type: CART_ADD_ITEM, payload: { productId: 9, quantity: 1 } })
-store.dispatch({ type: CART_REMOVE_ITEM, payload: { productId: 6} })
-store.dispatch({ type: CART_REMOVE_ITEM, payload: { productId: 9} })
+store.dispatch({ type: CART_REMOVE_ITEM, payload: { productId: 6 } })
+store.dispatch({ type: CART_REMOVE_ITEM, payload: { productId: 9 } })
+store.dispatch({
+  type: CART_ITEM_INCREASE_QUANTITY,
+  payload: { productId: 12 },
+})
+store.dispatch({
+  type: CART_ITEM_INCREASE_QUANTITY,
+  payload: { productId: 12 },
+})
+store.dispatch({
+  type: CART_ITEM_DECREASE_QUANTITY,
+  payload: { productId: 12 },
+})
+
+store.dispatch({
+  type: CART_ITEM_DECREASE_QUANTITY,
+  payload: { productId: 12 },
+})
