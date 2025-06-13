@@ -19,8 +19,6 @@ function reducer(state = initialState, action) {
   switch (action.type) {
     case CART_ADD_ITEM:
       return { ...state, cartItems: [...state.cartItems, action.payload] }
-    default:
-      return state
     case CART_REMOVE_ITEM:
       return {
         ...state,
@@ -50,6 +48,17 @@ function reducer(state = initialState, action) {
           })
           .filter((cartItem) => cartItem.quantity > 0),
       }
+    case WISHLIST_ADD_ITEM:
+      return { ...state, wishList: [...state.wishList, action.payload] }
+    case WISHLIST_REMOVE_ITEM:
+      return {
+        ...state,
+        wishList: state.wishList.filter(
+          (wishListItem) => wishListItem.productId !== action.payload.productId
+        ),
+      }
+    default:
+      return state
   }
 }
 
@@ -79,3 +88,8 @@ store.dispatch({
   type: CART_ITEM_DECREASE_QUANTITY,
   payload: { productId: 12 },
 })
+store.dispatch({ type: WISHLIST_ADD_ITEM, payload: { productId: 18 } })
+store.dispatch({ type: WISHLIST_ADD_ITEM, payload: { productId: 11 } })
+store.dispatch({ type: WISHLIST_REMOVE_ITEM, payload: { productId: 11 } })
+store.dispatch({ type: WISHLIST_REMOVE_ITEM, payload: { productId: 18 } })
+console.log(store.getState())
