@@ -30,23 +30,20 @@ export function increaseCartItemQuantity(productId) {
 // Reducer
 export default function cartReducer(state = [], action) {
   switch (action.type) {
-    case CART_ADD_ITEM: {
+    case CART_ADD_ITEM:
       const existingItem = state.find(
         (cartItem) => cartItem.productId === action.payload.productId
-      );
-    
+      )
       if (existingItem) {
         return state.map((cartItem) => {
           if (cartItem.productId === existingItem.productId) {
-            return { ...cartItem, quantity: cartItem.quantity + 1 };
+            return { ...cartItem, quantity: cartItem.quantity + 1 }
           }
-          return cartItem;
-        });
+          return cartItem
+        })
       }
-    
-      return [...state, { ...action.payload, quantity: 1 }];
-    }
-        case CART_REMOVE_ITEM:
+      return [...state, { ...action.payload, quantity: 1 }]
+    case CART_REMOVE_ITEM:
       return state.filter(
         (cartItem) => cartItem.productId !== action.payload.productId
       )
